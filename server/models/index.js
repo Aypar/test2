@@ -1,6 +1,8 @@
 module.exports = () => {
-    require('./organization');
-    require('./personnel');
+    require('./department');
+    require('./employee');
     require('./position');
     require('./user');
+    require('./branch');
+    require('./documentType');
 };

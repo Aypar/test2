@@ -4,7 +4,6 @@ const BaseSchema = require('./base');
 let PositionSchema = new BaseSchema({
 
     name: {type: String},
-
 });
 
 let PositionModel = mongoose.model('Position', PositionSchema);
