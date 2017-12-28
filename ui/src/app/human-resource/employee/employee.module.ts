@@ -5,14 +5,8 @@ import {HumanResourceComponent} from "../human-resource.component";
 
 const routes: Routes = [
     {
-        "path": "hr",
-        "component":HumanResourceComponent,
-        "children": [
-            {
-                "path": "employees",
-                "component": EmployeeComponent
-            }
-        ]
+        "path": "",
+        "component":EmployeeComponent,
     }
 ];
 

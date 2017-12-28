@@ -19,7 +19,7 @@ import { HumanResourceComponent } from './human-resource/human-resource.componen
        HumanResourceComponent,
     ],
     imports: [
-     //   LayoutModule,
+       LayoutModule,
          BrowserModule,
          BrowserAnimationsModule,
          AppRoutingModule,
