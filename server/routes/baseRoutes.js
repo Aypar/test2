@@ -1,10 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-class PersonnelRoutes {
+class BaseRoutes {
 
     constructor() {
         this.model = null;
+        this.entity = null;
         this.router = express.Router();
 
     }
@@ -17,6 +18,12 @@ class PersonnelRoutes {
     }
 
     create(req, res) {
+
+        let entity = new this.entity(req.body);
+        console.log(req.body);
+        entity.save((err, result) => {
+            res.json({error: err, result: result});
+        })
     }
 
     update(req, res) {
@@ -47,4 +54,4 @@ class PersonnelRoutes {
 
 }
 
-module.exports = new PersonnelRoutes().router;
+module.exports = BaseRoutes;

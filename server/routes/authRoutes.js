@@ -25,4 +25,4 @@ class AuthRoutes {
     }
 }
 
-module.exports = AuthRoutes.router;
+module.exports = new AuthRoutes().router;

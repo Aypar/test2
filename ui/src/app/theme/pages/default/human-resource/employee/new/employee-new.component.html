@@ -1,0 +1,290 @@
+<div class="m-content">
+
+    <div class="m-portlet m-portlet--mobile">
+
+        <div class="m-portlet__body">
+            <ul class="nav nav-tabs m-tabs-line--2x m-tabs-line m-tabs-line--danger" role="tablist">
+                <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#general_information" role="tab">
+                        1. General Information
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#personal_information" role="tab">
+                        2. Personal Information
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#address" role="tab">
+                        3. Address
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#bank_account" role="tab">
+                        4. Bank Account
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#documents" role="tab">
+                        5. Documents
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content m--margin-top-40">
+
+                <div class="tab-pane active" id="general_information" role="tabpanel">
+                    <div class="m-form__section m-form__section--first">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group m-form__group">
+                                    <label for="employee_name" class="font-weight-bold">
+                                        Name
+                                    </label>
+                                    <input [(ngModel)]="employee.general_info.name" type="text"
+                                           class="form-control m-input--air" id="employee_name"
+                                           aria-describedby="name help">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label for="employee_lastname" class="font-weight-bold">
+                                        Last Name
+                                    </label>
+                                    <input [(ngModel)]="employee.general_info.last_name" type="text"
+                                           class="form-control m-input--air" id="employee_lastname"
+                                           aria-describedby="name help">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label for="employee_email" class="font-weight-bold">
+                                        Email
+                                    </label>
+                                    <input [(ngModel)]="employee.general_info.email" type="email"
+                                           class="form-control m-input--air" id="employee_email"
+                                           aria-describedby="name help">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label for="employee_work_email" class="font-weight-bold">
+                                        Work Email
+                                    </label>
+                                    <input [(ngModel)]="employee.general_info.work_email" type="email"
+                                           class="form-control m-input--air" id="employee_work_email"
+                                           aria-describedby="name help">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <div class="form-group m-form__group">
+                                        <label for="employee_work_type" class="font-weight-bold">
+                                            Work Type
+                                        </label>
+                                        <select [(ngModel)]="employee.general_info.work_type"
+                                                class="form-control m-input--air" id="employee_work_type"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group m-form__group">
+                                    <label for="employee_hire_date" class="font-weight-bold">
+                                        Hire Date
+                                    </label>
+                                    <input type="text" class="basic_date_picker form-control m-input--air"
+                                           id="employee_hire_date"
+                                           aria-describedby="name help">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label for="employee_exit_date" class="font-weight-bold">
+                                        Exit Date
+                                    </label>
+                                    <input type="text" class="basic_date_picker form-control m-input--air"
+                                           id="employee_exit_date"
+                                           aria-describedby="name help">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label for="employee_branch" class="font-weight-bold">
+                                        Branch
+                                    </label>
+                                    <select class="form-control m-input--air" id="employee_branch"></select>
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label for="employee_department" class="font-weight-bold">
+                                        Department
+                                    </label>
+                                    <select class="form-control m-input--air" id="employee_department"></select>
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label for="employee_manager" class="font-weight-bold">
+                                        Manager
+                                    </label>
+                                    <select class="form-control m-input--air" id="employee_manager"></select>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <div class="tab-pane" id="personal_information" role="tabpanel">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group m-form__group">
+                                <label for="employee_identity_number" class="font-weight-bold">
+                                    Identity Number
+                                </label>
+                                <input type="number" class=" form-control m-input--air" id="employee_identity_number"
+                                       aria-describedby="name help">
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_birth_date" class="font-weight-bold">
+                                    Birth Date
+                                </label>
+                                <input type="text" class="basic_date_picker form-control m-input--air"
+                                       id="employee_birth_date"
+                                       aria-describedby="name help">
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_martial_status" class="font-weight-bold">
+                                    Marital Status
+                                </label>
+                                <select type="text" class=" form-control m-input--air" id="employee_martial_status"
+                                        aria-describedby="name help"> </select>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group m-form__group">
+                                <label for="employee_military_service" class="font-weight-bold">
+                                    Military Service
+                                </label>
+                                <select type="text" class=" form-control m-input--air" id="employee_military_service"
+                                        aria-describedby="name help"> </select>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_disability_level" class="font-weight-bold">
+                                    Disability Level
+                                </label>
+                                <input type="number" class=" form-control m-input--air" id="employee_disability_level"
+                                       aria-describedby="name help"/>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_nationality" class="font-weight-bold">
+                                    Nationality
+                                </label>
+                                <select type="text" class=" form-control m-input--air" id="employee_nationality"
+                                        aria-describedby="name help"> </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="address" role="tabpanel">
+                    <!--address: {type: String},-->
+                    <!--phone_number: {type: String},-->
+                    <!--country: {type: String},-->
+                    <!--city: {type: String},-->
+                    <!--postal_code: {type: String}-->
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="form-group m-form__group">
+                                <label for="employee_country" class="font-weight-bold">
+                                    Country
+                                </label>
+                                <select type="text" class=" form-control m-input--air" id="employee_country"
+                                        aria-describedby="name help"> </select>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_city" class="font-weight-bold">
+                                    City
+                                </label>
+                                <select type="text" class=" form-control m-input--air" id="employee_city"
+                                        aria-describedby="name help"> </select>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_address_line_1" class="font-weight-bold">
+                                    Address Line 1
+                                </label>
+                                <input type="text" class=" form-control m-input--air" id="employee_address_line_1"
+                                       aria-describedby="name help"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group m-form__group">
+                                <label for="employee_address_line_2" class="font-weight-bold">
+                                    Address Line 2
+                                </label>
+                                <input type="text" class=" form-control m-input--air" id="employee_address_line_2"
+                                       aria-describedby="name help"/>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_postal_code" class="font-weight-bold">
+                                    Postal Code
+                                </label>
+                                <input type="text" class=" form-control m-input--air" id="employee_postal_code"
+                                       aria-describedby="name help"/>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_phone_number" class="font-weight-bold">
+                                    Phone Number
+                                </label>
+                                <input type="text" class=" form-control m-input--air" id="employee_phone_number"
+                                       aria-describedby="name help"/>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tab-pane" id="bank_account" role="tabpanel">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group m-form__group">
+                                <label for="employee_bank_name" class="font-weight-bold">
+                                    Bank Name
+                                </label>
+                                <input type="text" class=" form-control m-input--air" id="employee_bank_name"
+                                       aria-describedby="name help">
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_account_type" class="font-weight-bold">
+                                    Account Type
+                                </label>
+                                <select type="text" class=" form-control m-input--air" id="employee_account_type"
+                                        aria-describedby="name help"> </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group m-form__group">
+                                <label for="employee_account_number" class="font-weight-bold">
+                                    Account Number
+                                </label>
+                                <input type="text" class=" form-control m-input--air" id="employee_account_number"
+                                       aria-describedby="name help"/>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="employee_iban" class="font-weight-bold">
+                                    IBAN
+                                </label>
+                                <input type="text" class=" form-control m-input--air" id="employee_iban"
+                                       aria-describedby="name help"/>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="documents" role="tabpanel">
+
+                </div>
+
+                <div class="m-separator m-separator--dashed m-separator--lg">
+                    <div class="row">
+                        <div class="col">
+                            <button (click)="employeeService.save(employee)" class="btn btn-success m-btn m-btn--air pull-right m--margin-top-10"><i class="fa fa-check"></i> Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,7 @@ export class ThemeComponent implements OnInit {
 
     }
     ngOnInit() {
-        this._script.loadScripts('body', ['assets/vendors/base/vendors.bundle.js', 'assets/demo/default/base/scripts.bundle.js'], true)
+        this._script.loadScripts('body', ['assets/vendors/base/vendors.bundle.js', 'assets/demo/default/base/scripts.bundle.js','assets/app/js/custom.js'], true)
             .then(result => {
                 Helpers.setLoading(false);
                 // optional js to be loaded once
