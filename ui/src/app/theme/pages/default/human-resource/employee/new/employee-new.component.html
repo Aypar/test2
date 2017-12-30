@@ -74,7 +74,11 @@
                                             Work Type
                                         </label>
                                         <select [(ngModel)]="employee.general_info.work_type"
-                                                class="form-control m-input--air" id="employee_work_type"></select>
+                                                class="form-control m-input--air" id="employee_work_type">
+                                            <option (ngValue)="FullTime">Full Time</option>
+                                            <option (ngValue)="PartTime">Part Time</option>
+                                            <option (ngValue)="Consultant">Consultant</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +87,8 @@
                                     <label for="employee_hire_date" class="font-weight-bold">
                                         Hire Date
                                     </label>
-                                    <input type="text" class="basic_date_picker form-control m-input--air"
+                                    <input [(ngModel)]="employee.general_info.hire_date" type="text"
+                                           class="basic_date_picker form-control m-input--air"
                                            id="employee_hire_date"
                                            aria-describedby="name help">
                                 </div>
@@ -91,27 +96,49 @@
                                     <label for="employee_exit_date" class="font-weight-bold">
                                         Exit Date
                                     </label>
-                                    <input type="text" class="basic_date_picker form-control m-input--air"
+                                    <input [(ngModel)]="employee.general_info.exit_date" type="text"
+                                           class="basic_date_picker form-control m-input--air"
                                            id="employee_exit_date"
                                            aria-describedby="name help">
                                 </div>
                                 <div class="form-group m-form__group">
-                                    <label for="employee_branch" class="font-weight-bold">
+                                    <label for="employee_branch" style="width: 100%" class="font-weight-bold fit-width">
                                         Branch
+                                        <button (click)="modalOpen(create_branch_modal)"
+                                                class="btn btn-link font-weight-bold btn-sm pull-right"
+                                                style="margin: 0;padding: 0;">
+                                            <i class="fa fa-plus"></i> New
+                                        </button>
                                     </label>
-                                    <select class="form-control m-input--air" id="employee_branch"></select>
+                                    <select [(ngModel)]="employee.general_info.branch"
+                                            class="form-control m-input--air" id="employee_branch">
+                                        <option *ngFor="let b of branches" [ngValue]="b._id">{{b.name}}</option>
+                                    </select>
                                 </div>
                                 <div class="form-group m-form__group">
-                                    <label for="employee_department" class="font-weight-bold">
+                                    <label for="employee_department" class="font-weight-bold" style="width: 100%">
                                         Department
+                                        <button (click)="modalOpen(create_department_modal)"
+                                                class="btn btn-link font-weight-bold btn-sm pull-right"
+                                                style="margin: 0;padding: 0;">
+                                            <i class="fa fa-plus"></i> New
+                                        </button>
                                     </label>
-                                    <select class="form-control m-input--air" id="employee_department"></select>
+                                    <select [(ngModel)]="employee.general_info.department"
+                                            class="form-control m-input--air" id="employee_department">
+                                        <option *ngFor="let d of departments" [ngValue]="d._id">{{d.name}}</option>
+                                    </select>
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="employee_manager" class="font-weight-bold">
                                         Manager
                                     </label>
-                                    <select class="form-control m-input--air" id="employee_manager"></select>
+                                    <select [(ngModel)]="employee.general_info.manager"
+                                            class="form-control m-input--air" id="employee_manager">
+                                        <option *ngFor="let e of employees" (ngValue)="e._id">
+                                            {{e.general_info.name}} {{e.general_info.last_name}}
+                                        </option>
+                                    </select>
                                 </div>
 
                             </div>
@@ -129,14 +156,16 @@
                                 <label for="employee_identity_number" class="font-weight-bold">
                                     Identity Number
                                 </label>
-                                <input type="number" class=" form-control m-input--air" id="employee_identity_number"
+                                <input [(ngModel)]="employee.personal_info.identity_number" type="number"
+                                       class=" form-control m-input--air" id="employee_identity_number"
                                        aria-describedby="name help">
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_birth_date" class="font-weight-bold">
                                     Birth Date
                                 </label>
-                                <input type="text" class="basic_date_picker form-control m-input--air"
+                                <input [(ngModel)]="employee.personal_info.birthday" type="text"
+                                       class="basic_date_picker form-control m-input--air"
                                        id="employee_birth_date"
                                        aria-describedby="name help">
                             </div>
@@ -144,8 +173,12 @@
                                 <label for="employee_martial_status" class="font-weight-bold">
                                     Marital Status
                                 </label>
-                                <select type="text" class=" form-control m-input--air" id="employee_martial_status"
-                                        aria-describedby="name help"> </select>
+                                <select [(ngModel)]="employee.personal_info.marital_status" type="text"
+                                        class=" form-control m-input--air" id="employee_martial_status"
+                                        aria-describedby="name help">
+                                    <option (ngValue)="Single">Single</option>
+                                    <option (ngValue)="Married">Married</option>
+                                </select>
                             </div>
                         </div>
 
@@ -154,22 +187,28 @@
                                 <label for="employee_military_service" class="font-weight-bold">
                                     Military Service
                                 </label>
-                                <select type="text" class=" form-control m-input--air" id="employee_military_service"
-                                        aria-describedby="name help"> </select>
+                                <select [(ngModel)]="employee.personal_info.military_service" type="text"
+                                        class=" form-control m-input--air" id="employee_military_service"
+                                        aria-describedby="name help">
+                                    <option (ngValue)="Completed">Completed</option>
+                                    <option (ngValue)="Exempted">Exempted</option>
+                                </select>
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_disability_level" class="font-weight-bold">
                                     Disability Level
                                 </label>
-                                <input type="number" class=" form-control m-input--air" id="employee_disability_level"
+                                <input [(ngModel)]="employee.personal_info.disability_level" type="number"
+                                       class=" form-control m-input--air" id="employee_disability_level"
                                        aria-describedby="name help"/>
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_nationality" class="font-weight-bold">
                                     Nationality
                                 </label>
-                                <select type="text" class=" form-control m-input--air" id="employee_nationality"
-                                        aria-describedby="name help"> </select>
+                                <input [(ngModel)]="employee.personal_info.nationality" type="text"
+                                       class=" form-control m-input--air" id="employee_nationality"
+                                       aria-describedby="name help"/>
                             </div>
                         </div>
                     </div>
@@ -187,21 +226,24 @@
                                 <label for="employee_country" class="font-weight-bold">
                                     Country
                                 </label>
-                                <select type="text" class=" form-control m-input--air" id="employee_country"
+                                <select [(ngModel)]="employee.address_info.country" type="text"
+                                        class=" form-control m-input--air" id="employee_country"
                                         aria-describedby="name help"> </select>
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_city" class="font-weight-bold">
                                     City
                                 </label>
-                                <select type="text" class=" form-control m-input--air" id="employee_city"
+                                <select [(ngModel)]="employee.address_info.city" type="text"
+                                        class=" form-control m-input--air" id="employee_city"
                                         aria-describedby="name help"> </select>
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_address_line_1" class="font-weight-bold">
                                     Address Line 1
                                 </label>
-                                <input type="text" class=" form-control m-input--air" id="employee_address_line_1"
+                                <input [(ngModel)]="employee.address_info.address_line_1" type="text"
+                                       class=" form-control m-input--air" id="employee_address_line_1"
                                        aria-describedby="name help"/>
                             </div>
                         </div>
@@ -210,24 +252,25 @@
                                 <label for="employee_address_line_2" class="font-weight-bold">
                                     Address Line 2
                                 </label>
-                                <input type="text" class=" form-control m-input--air" id="employee_address_line_2"
+                                <input [(ngModel)]="employee.address_info.address_line_2" type="text"
+                                       class=" form-control m-input--air" id="employee_address_line_2"
                                        aria-describedby="name help"/>
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_postal_code" class="font-weight-bold">
                                     Postal Code
                                 </label>
-                                <input type="text" class=" form-control m-input--air" id="employee_postal_code"
+                                <input [(ngModel)]="employee.address_info.postal_code" type="text" class=" form-control m-input--air" id="employee_postal_code"
                                        aria-describedby="name help"/>
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_phone_number" class="font-weight-bold">
                                     Phone Number
                                 </label>
-                                <input type="text" class=" form-control m-input--air" id="employee_phone_number"
+                                <input [(ngModel)]="employee.address_info.phone_number" type="text"
+                                       class=" form-control m-input--air" id="employee_phone_number"
                                        aria-describedby="name help"/>
                             </div>
-
                         </div>
                     </div>
 
@@ -240,14 +283,16 @@
                                 <label for="employee_bank_name" class="font-weight-bold">
                                     Bank Name
                                 </label>
-                                <input type="text" class=" form-control m-input--air" id="employee_bank_name"
+                                <input [(ngModel)]="employee.bank_account.bank_name" type="text"
+                                       class=" form-control m-input--air" id="employee_bank_name"
                                        aria-describedby="name help">
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_account_type" class="font-weight-bold">
                                     Account Type
                                 </label>
-                                <select type="text" class=" form-control m-input--air" id="employee_account_type"
+                                <select [(ngModel)]="employee.bank_account.account_type" type="text"
+                                        class=" form-control m-input--air" id="employee_account_type"
                                         aria-describedby="name help"> </select>
                             </div>
 
@@ -258,14 +303,16 @@
                                 <label for="employee_account_number" class="font-weight-bold">
                                     Account Number
                                 </label>
-                                <input type="text" class=" form-control m-input--air" id="employee_account_number"
+                                <input [(ngModel)]="employee.bank_account.account_number" type="text"
+                                       class=" form-control m-input--air" id="employee_account_number"
                                        aria-describedby="name help"/>
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="employee_iban" class="font-weight-bold">
                                     IBAN
                                 </label>
-                                <input type="text" class=" form-control m-input--air" id="employee_iban"
+                                <input [(ngModel)]="employee.bank_account.iban" type="text"
+                                       class=" form-control m-input--air" id="employee_iban"
                                        aria-describedby="name help"/>
                             </div>
 
@@ -279,7 +326,14 @@
                 <div class="m-separator m-separator--dashed m-separator--lg">
                     <div class="row">
                         <div class="col">
-                            <button (click)="employeeService.save(employee)" class="btn btn-success m-btn m-btn--air pull-right m--margin-top-10"><i class="fa fa-check"></i> Save</button>
+                            <button *ngIf="!edit_mode" (click)="employeeService.save(employee)"
+                                    class="btn btn-success m-btn m-btn--air pull-right m--margin-top-10"><i
+                                    class="fa fa-check"></i> Save
+                            </button>
+                            <button *ngIf="edit_mode" (click)="employeeService.update(employee)"
+                                    class="btn btn-success m-btn m-btn--air pull-right m--margin-top-10"><i
+                                    class="fa fa-check"></i> Save
+                            </button>
                         </div>
                     </div>
 
@@ -288,3 +342,42 @@
         </div>
     </div>
 </div>
+
+<ng-template #create_branch_modal let-c="close" let-d="dismiss" let-name="string">
+    <div class="modal-header">
+        <h4 class="modal-title">New Branch</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input type="text" class="form-control" placeholder="Branch Name" [(ngModel)]="branch.name">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addBranch(branch)">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #create_department_modal let-c="close" let-d="dismiss" let-name="string">
+    <div class="modal-header">
+        <h4 class="modal-title">New Department</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label for="parent_department">
+            Parent Department
+        </label>
+        <select class="form-control" [(ngModel)]="department.parent" id="parent_department">
+            <option *ngFor="let d of departments" [ngValue]="d._id">{{d.name}}</option>
+        </select>
+        <input type="text" class="form-control m--margin-top-10" placeholder="Branch Name"
+               [(ngModel)]="department.name">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addDepartment(branch)">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    </div>
+</ng-template>

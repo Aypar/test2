@@ -11,6 +11,9 @@ import {ThemeRoutingModule} from "./theme/theme-routing.module";
 import {AuthModule} from "./auth/auth.module";
 import {EmployeeService} from "./_services/employee.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {DepartmentService} from "./_services/department.service";
+import {BranchService} from "./_services/branch.service";
+import {PositionService} from "./_services/position.service";
 
 
 @NgModule({
@@ -28,7 +31,13 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
         ThemeRoutingModule,
         AuthModule,
     ],
-    providers: [ScriptLoaderService,EmployeeService,HttpClient],
+    providers: [
+        ScriptLoaderService,
+        EmployeeService,
+        DepartmentService,
+        BranchService,
+        PositionService,
+        HttpClient],
     bootstrap: [AppComponent]
 })
 export class AppModule {

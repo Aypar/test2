@@ -17,10 +17,10 @@ const routes: Routes = [
                 "path": "human-resource\/employee/new",
                 "loadChildren": ".\/pages\/default\/human-resource\/employee\/new/employee-new.module#EmployeeNewModule"
             },
-            // {
-            //     "path": "angular\/primeng",
-            //     "loadChildren": ".\/pages\/default\/angular\/primeng\/primeng.module#PrimengModule"
-            // },
+            {
+                "path": "human-resource\/employee/edit/:id",
+                "loadChildren": ".\/pages\/default\/human-resource\/employee\/new/employee-new.module#EmployeeNewModule"
+            },
             {
                 "path": "index",
                 "loadChildren": ".\/pages\/default\/index\/index.module#IndexModule"

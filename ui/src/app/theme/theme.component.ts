@@ -10,6 +10,10 @@ declare let mLayout: any;
     selector: ".m-grid.m-grid--hor.m-grid--root.m-page",
     templateUrl: "./theme.component.html",
     encapsulation: ViewEncapsulation.None,
+    styleUrls: [
+        '../../../node_modules/primeng/resources/primeng.css',
+        '../../../node_modules/primeng/resources/themes/bootstrap/theme.css',
+    ]
 })
 export class ThemeComponent implements OnInit {
 
