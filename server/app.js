@@ -24,25 +24,7 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
-// app.use((req, res, next) => {
-//
-//     if (req.method === 'GET') {
-//         if (req.query.find_query) {
-//             req.query.find_query.is_deleted = false;
-//         }
-//
-//         req.page_size = req.query.page_size || 10;
-//         req.page_index = req.query.page_index || 0;
-//     }
-//
-//     if (req.method === 'POST') {
-//         req.page_size = req.query.page_size || 10;
-//         req.page_index = req.query.page_index || 0;
-//     }
-//     console.log(req);
-// console.log('qqqqq');
-//     next();
-// });
+
 app.use('/api/human-resource/employee', routes.employee);
 app.use('/api/branch', routes.branch);
 app.use('/api/department', routes.department);

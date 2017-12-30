@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 class BaseRoutes {
 
@@ -11,8 +10,8 @@ class BaseRoutes {
     }
 
     getById(req, res) {
-        let _id = req.body._id;
-        this.model.getById(_id, (error, result) => {
+        let _id = req.query.id;
+        this.model.findById(_id, (error, result) => {
             res.json({error: error, result: result})
         })
     }
@@ -20,7 +19,6 @@ class BaseRoutes {
     create(req, res) {
 
         let entity = new this.entity(req.body);
-        console.log(req.body);
         entity.save((err, result) => {
             res.json({error: err, result: result});
         })
@@ -28,8 +26,8 @@ class BaseRoutes {
 
     update(req, res) {
         let _id = req.body._id;
-        let update_query = req.body.update_query;
-        this.model.update({_id: _id}, update_query, (error, result) => {
+        let data = req.body.data;
+        this.model.update({_id: _id}, {$set: data}, (error, result) => {
             res.json({error: error, result: result});
         });
 
@@ -43,11 +41,14 @@ class BaseRoutes {
     }
 
     list(req, res) {
-        let page_index = req.page_index;
-        let page_size = req.page_size;
-        let query = req.body.find_query;
+        let page_index = req.query.page_index || 0;
+        let page_size = req.query.page_size || +Infinity;
+        let query = req.query.find || {};
+        delete req.query.page_index;
+        delete req.query.page_size;
         query.is_deleted = false;
-        this.model.find(query).skip(page_index * page_size).limit(page_size).exec((error, result) => {
+        console.log(query);
+        this.model.find(query).exec((error, result) => {
             res.json({error: error, result: result});
         });
     }

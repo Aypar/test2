@@ -4,7 +4,7 @@ const BaseSchema = require('./base');
 let EmployeeSchema = new BaseSchema({
     personal_info: {
         birthday: {type: Date},
-        identity_number: {type: String, index: true, unique: true},
+        identity_number: {type: String, index: true, unique: false},
         marital_status: {type: String, enum: [null,'Male', 'Female']},
         military_service: {type: String, enum: [null,'Completed', 'NotCompleted']},
         disability_level: {type: Number},
@@ -69,5 +69,5 @@ let EmployeeSchema = new BaseSchema({
 });
 
 
-let EmployeeModel = mongoose.model('EmployeeModel', EmployeeSchema);
+let EmployeeModel = mongoose.model('Employee', EmployeeSchema);
 module.exports = EmployeeModel;
